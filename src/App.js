@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import React, { useState, useRef } from "react";
+import "./App.css";
+import { questions } from "./const";
+import swal from "sweetalert";
+import { Form } from "./form";
 
 function App() {
+  const [blockIndex, setBlockIndex] = useState(0);
+
+  const formQuestion = questions.find((element) => {
+    return element.blockId === blockIndex;
+  });
+
+  const changeQuestion = () => {
+    if (blockIndex + 1 < questions.length) {
+      setBlockIndex(blockIndex + 1);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <>
+      <header className='page-header'>
+        <div>
+          <img src='./img/logoCompany.png' alt='Логотип компании' />
+        </div>
+        <p className='page-header__history'>
+          Чверть століття тому було покладено початок великого шляху. Сьогодні
+          ми також сміливі, як і на самому початку.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
-    </div>
+      <main class='main-container'>
+        <p class='main-container__title'>{formQuestion.title}</p>
+        <p class='main-container__qustion'>{formQuestion.description}</p>
+        {
+          <Form
+            questionElements={formQuestion.questionElements}
+            changeQuestionHandler={() => changeQuestion()}
+          />
+        }
+      </main>
+    </>
   );
 }
 
