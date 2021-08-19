@@ -1,3 +1,6 @@
+export const AppRoute = {
+  ROOT: "/:id",
+};
 export const parceToUrl = (elementId, name) => {
   return `&ELEMENT_CODE=${elementId}&FIELDS%5BNAME%5D=${name}`;
 };

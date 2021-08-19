@@ -47,18 +47,18 @@ export function Form(props) {
     }
 
     return (        
-            <form class="qustion-form">
+            <form className="qustion-form">
                 {questionElements.map(({questionName, text}, index) => {return (
-                   <div class="qustion-form__block">
-                   <label class="qustion-form__label" for={questionName}>{`Ответ №${questionName}`}</label>
-                   <div class="qustion-form__input-container">
-                   <input ref={questionRefs[index]} placeholder='0' class="qustion-form__input" type="number" id={questionName}/>
+                   <div key={index} className="qustion-form__block">
+                   <label className="qustion-form__label" htmlFor={questionName}>{`Ответ №${questionName}`}</label>
+                   <div className="qustion-form__input-container">
+                   <input ref={questionRefs[index]} placeholder='0' className="qustion-form__input" type="number" id={questionName}/>
                    <p>Баллов</p>
                    </div>
-                       <p class="qustion-form__description">{text}</p>                       
+                       <p className="qustion-form__description">{text}</p>                       
                </div>
                 )} )}                
-                <button onClick={onSubmitHandler} type="submit" class="qustion-form__button">Наступне питання</button>
+                <button onClick={onSubmitHandler} type="submit" className="qustion-form__button">Наступне питання</button>
             </form>
         );
 }
