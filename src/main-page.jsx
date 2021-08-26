@@ -1,19 +1,49 @@
-import {React, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { React, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { questions } from "./const";
 import { Form } from "./form";
+import { Header } from "./Header";
+import { AppRoute } from "./const";
+import axios from "axios";
+import { getUrlBitrixString } from "./utils/getUrlBitrixString";
 
-export const MainPage = () => {
+let resultObject = null;
+const baseUrl = "https://anfy.top/req";
+
+export const MainPage = (props) => {
+  const { paramBitrixObject } = props;
+
+  const history = useHistory();
+
+  if (paramBitrixObject === null) {
+    history.push("/form");
+  }
+
+  useEffect(() => {
+    resultObject = Object.assign({}, paramBitrixObject);
+  }, [paramBitrixObject]);
+
   const [blockIndex, setBlockIndex] = useState(0);
-
-  const {id} = useParams();
-  console.log(id);
 
   const formQuestion = questions.find((element) => {
     return element.blockId === blockIndex;
   });
 
-  const changeQuestion = () => {
+  const changeQuestion = (fields, values) => {
+    fields.forEach((item, index) => {
+      resultObject[`FIELDS%5B${item}%5D`] = values[index];
+    });
+
+    let resultString = getUrlBitrixString(resultObject);
+
+    axios({
+      method: "post",
+      url: baseUrl,
+      data: {
+        url: resultString,
+      },
+    }).then((response) => console.log(response.data));
+
     if (blockIndex + 1 < questions.length) {
       setBlockIndex(blockIndex + 1);
     }
@@ -21,25 +51,21 @@ export const MainPage = () => {
 
   return (
     <>
-      <header className='page-header'>
-        <div>
-          <img src='./img/logoCompany.png' alt='Логотип компании' />
-        </div>
-        <p className='page-header__history'>
-          Чверть століття тому було покладено початок великого шляху. Сьогодні
-          ми також сміливі, як і на самому початку.
-        </p>
-      </header>
+      <Header />
       <main className='main-container'>
         <p className='main-container__title'>{formQuestion.title}</p>
         <p className='main-container__qustion'>{formQuestion.description}</p>
         {
           <Form
             questionElements={formQuestion.questionElements}
-            changeQuestionHandler={() => changeQuestion()}
+            changeQuestionHandler={(fields, values) =>
+              changeQuestion(fields, values)
+            }
+            resultObject={resultObject}
+            bitrixFields={formQuestion.bitrixFields}
           />
         }
       </main>
     </>
   );
-}
+};
