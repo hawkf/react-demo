@@ -48,7 +48,9 @@ export const MainPage = (props) => {
     }
 
     if (blockIndex + 1 === questions.length) {
-      window.open("https://agromat-staff-interview.bitrix24site.ua/ThankYou/");
+      window.location.replace(
+        "https://agromat-staff-interview.bitrix24site.ua/ThankYou/"
+      );
     }
   };
 
