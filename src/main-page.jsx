@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { questions } from "./const";
 import { Form } from "./form";
 import { Header } from "./Header";
-import { AppRoute } from "./const";
 import axios from "axios";
 import { getUrlBitrixString } from "./utils/getUrlBitrixString";
 
@@ -47,6 +46,10 @@ export const MainPage = (props) => {
     if (blockIndex + 1 < questions.length) {
       setBlockIndex(blockIndex + 1);
     }
+
+    if (blockIndex + 1 === questions.length) {
+      window.open("https://agromat-staff-interview.bitrix24site.ua/ThankYou/");
+    }
   };
 
   return (
@@ -61,7 +64,6 @@ export const MainPage = (props) => {
             changeQuestionHandler={(fields, values) =>
               changeQuestion(fields, values)
             }
-            resultObject={resultObject}
             bitrixFields={formQuestion.bitrixFields}
           />
         }

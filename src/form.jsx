@@ -1,16 +1,9 @@
 import React, { useRef } from "react";
 import swal from "sweetalert";
-import axios from "axios";
-import { getUrlBitrixString } from "./utils/getUrlBitrixString";
 
 export function Form(props) {
   window.scrollTo(0, 0);
-  const {
-    questionElements,
-    changeQuestionHandler,
-    resultObject,
-    bitrixFields,
-  } = props;
+  const { questionElements, changeQuestionHandler, bitrixFields } = props;
 
   const question1 = useRef();
   const question2 = useRef();
@@ -34,7 +27,6 @@ export function Form(props) {
       return;
     }
 
-    // let object1 = Object.assign({}, resultObject);
     let values = questionRefs.map((item) => {
       return item.current.value;
     });
