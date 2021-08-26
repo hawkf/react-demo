@@ -41,16 +41,17 @@ export const MainPage = (props) => {
       data: {
         url: resultString,
       },
-    }).then((response) => console.log(response.data));
+    }).then((response) => {
+      console.log(response.data);
+      if (blockIndex + 1 === questions.length) {
+        window.location.replace(
+          "https://agromat-staff-interview.bitrix24site.ua/ThankYou/"
+        );
+      }
+    });
 
     if (blockIndex + 1 < questions.length) {
       setBlockIndex(blockIndex + 1);
-    }
-
-    if (blockIndex + 1 === questions.length) {
-      window.location.replace(
-        "https://agromat-staff-interview.bitrix24site.ua/ThankYou/"
-      );
     }
   };
 
