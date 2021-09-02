@@ -9,7 +9,7 @@ import {
   getUrlBitrixStringAdd,
 } from "./utils/getUrlBitrixString";
 
-const baseUrl = "https://anfy.top/req1";
+const baseUrl = "https://anfy.top/req";
 
 const fieldsWelcomScreen = [
   "FIELDS%5Bproperty_1072%5D",

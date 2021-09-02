@@ -7,7 +7,7 @@ import axios from "axios";
 import { getUrlBitrixString } from "./utils/getUrlBitrixString";
 
 let resultObject = null;
-const baseUrl = "https://anfy.top/req1";
+const baseUrl = "https://anfy.top/req";
 
 export const MainPage = (props) => {
   const { paramBitrixObject } = props;
