@@ -9,7 +9,8 @@ import {
   getUrlBitrixStringAdd,
 } from "./utils/getUrlBitrixString";
 
-const baseUrl = "https://anfy.top/req";
+//const baseUrl = "https://anfy.top/req";
+const baseUrl = "http://querylist.agromat.ua";
 
 const fieldsWelcomScreen = [
   "FIELDS%5Bproperty_1072%5D",
@@ -130,60 +131,60 @@ export const PersonalInfoForm = (props) => {
   };
 
   return (
-    <section className='personal-info'>
-      <p className='personal-info__text'>
+    <section className="personal-info">
+      <p className="personal-info__text">
         Чтоб приступить, заполните, пожалуйста, форму внизу
       </p>
-      <form className='personal-info__form'>
-        <label className='personal-info__form-label' htmlFor='name'>
+      <form className="personal-info__form">
+        <label className="personal-info__form-label" htmlFor="name">
           Имя
         </label>
         <input
           value={firstNameState}
           onChange={(evt) => setFirstNameState(evt.target.value)}
-          className='personal-info__form-input'
-          type='text'
-          id='name'
+          className="personal-info__form-input"
+          type="text"
+          id="name"
           required={true}
         />
-        <label className='personal-info__form-label' htmlFor='second-name'>
+        <label className="personal-info__form-label" htmlFor="second-name">
           Фамилия:
         </label>
         <input
           value={lastNameState}
           onChange={(evt) => setLastNameState(evt.target.value)}
-          className='personal-info__form-input'
-          type='text'
-          id='second-name'
+          className="personal-info__form-input"
+          type="text"
+          id="second-name"
           required={true}
         />
-        <label className='personal-info__form-label' htmlFor='e-mai'>
+        <label className="personal-info__form-label" htmlFor="e-mai">
           E-mail:
         </label>
         <input
           value={emailState}
           onChange={(evt) => setEmailState(evt.target.value)}
-          className='personal-info__form-input'
-          type='email'
-          id='e-mail'
+          className="personal-info__form-input"
+          type="email"
+          id="e-mail"
           required={true}
         />
-        <label className='personal-info__form-label' htmlFor='position'>
+        <label className="personal-info__form-label" htmlFor="position">
           Должность:
         </label>
         <input
           value={positionState}
           onChange={(evt) => setPositionState(evt.target.value)}
-          className='personal-info__form-input'
-          type='text'
-          id='position'
+          className="personal-info__form-input"
+          type="text"
+          id="position"
           required={true}
         />
       </form>
       <button
         onClick={() => onSubmitHandler()}
-        type='submit'
-        className='personal-info__form__button'
+        type="submit"
+        className="personal-info__form__button"
       >
         Перейти к первому вопросу
       </button>
