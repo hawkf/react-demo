@@ -62,6 +62,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script
+      type="text/javascript"
+      src="//www.gstatic.com/firebasejs/3.6.8/firebase.js"
+    ></script>
+    <script type="text/javascript" src="/firebase_subscribe.js"></script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -73,20 +78,20 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
+    <!-- <script type="text\JavaScript">
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
           navigator.serviceWorker
-            .register('worker.js')
+            .register("worker.js")
             .then(
               function (registration) {
                 console.log(
-                  'Worker registration successful',
+                  "Worker registration successful",
                   registration.scope
                 );
               },
               function (err) {
-                console.log('Worker registration failed', err);
+                console.log("Worker registration failed", err);
               }
             )
             .catch(function (err) {
@@ -94,8 +99,25 @@
             });
         });
       } else {
-        console.log('Service Worker is not supported by browser.');
+        console.log("Service Worker is not supported by browser.");
       }
-    </script>
+
+      Notification.requestPermission(function (result) {
+        if (result === "granted") {
+          navigator.serviceWorker.ready.then(function (registration) {
+            registration.showNotification("Notification with ServiceWorker");
+          });
+          navigator.serviceWorker.addEventListener("push", function (event) {
+            console.log("push in service worker");
+            var message = JSON.parse(event.data.text()); //
+            event.waitUntil(
+              self.registration.showNotification(message.title, {
+                body: message.body,
+              })
+            );
+          });
+        }
+      });
+    </script> -->
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { AppRoute } from "./const";
 import axios from "axios";
@@ -130,6 +130,18 @@ export const PersonalInfoForm = (props) => {
     history.push(AppRoute.ROOT);
   };
 
+  const showNotification = () => {
+    new Notification("Hey");
+  };
+
+  useEffect(() => {
+    if (!("Notification" in window)) {
+      console.log("This browser does not support desktop notification");
+    } else {
+      Notification.requestPermission();
+    }
+  }, []);
+
   return (
     <section className="personal-info">
       <p className="personal-info__text">
@@ -188,6 +200,7 @@ export const PersonalInfoForm = (props) => {
       >
         Перейти к первому вопросу
       </button>
+      <button onClick={() => showNotification()}>push</button>
     </section>
   );
 };
