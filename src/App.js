@@ -4,6 +4,8 @@ import { MainPage } from "./main-page";
 import { WelcomScreen } from "./welcom-screen";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { AppRoute } from "./const";
+// import "./firebase.js";
+// import { getToken } from "./firebase.js";
 
 let elementId = "";
 
@@ -14,6 +16,9 @@ const elementIdChangeHandler = (id) => {
 
 function App() {
   const [paramBitrixObject, setBitrixObject] = useState(null);
+  // const [isTokenFound, setTokenFound] = useState(false);
+
+  // getToken(setTokenFound);
 
   const paramBitrixObjectChanger = (paramObject) => {
     setBitrixObject(Object.assign({}, paramObject));

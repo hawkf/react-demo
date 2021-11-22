@@ -7,7 +7,8 @@ import axios from "axios";
 import { getUrlBitrixString } from "./utils/getUrlBitrixString";
 
 let resultObject = null;
-const baseUrl = "https://anfy.top/req";
+// const baseUrl = "https://anfy.top/req";
+const baseUrl = "http://querylist.agromat.ua";
 
 export const MainPage = (props) => {
   const { paramBitrixObject } = props;
@@ -58,9 +59,9 @@ export const MainPage = (props) => {
   return (
     <>
       <Header />
-      <main className='main-container'>
-        <p className='main-container__title'>{formQuestion.title}</p>
-        <p className='main-container__qustion'>{formQuestion.description}</p>
+      <main className="main-container">
+        <p className="main-container__title">{formQuestion.title}</p>
+        <p className="main-container__qustion">{formQuestion.description}</p>
         {
           <Form
             questionElements={formQuestion.questionElements}

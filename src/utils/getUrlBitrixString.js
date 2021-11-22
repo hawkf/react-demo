@@ -1,8 +1,14 @@
+// let resultString =
+//   "https://my.agromat.ua/rest/893/eh1mpd7uf8uy4bzg/lists.element.update?";
+
+// let resultStringAdd =
+//   "https://my.agromat.ua/rest/893/eh1mpd7uf8uy4bzg/lists.element.add?";
+
 let resultString =
-  "https://my.agromat.ua/rest/893/eh1mpd7uf8uy4bzg/lists.element.update?";
+  "https://my.agromat.ua/rest/1633/ehb95qa2jkx5hesc/lists.element.update?";
 
 let resultStringAdd =
-  "https://my.agromat.ua/rest/893/eh1mpd7uf8uy4bzg/lists.element.add?";
+  "https://my.agromat.ua/rest/1633/ehb95qa2jkx5hesc/lists.element.add?";
 
 export const getUrlBitrixString = (paramObject) => {
   let resultUrl = resultString;
